@@ -177,3 +177,4 @@ C:\Users\ADMINMATERIALES\Desktop\Correspondencia2.0\backend\obj\Debug\net9.0\rji
 C:\Users\ADMINMATERIALES\Desktop\Correspondencia2.0\backend\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
 C:\Users\ADMINMATERIALES\Desktop\Correspondencia2.0\backend\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
 C:\Users\ADMINMATERIALES\Desktop\Correspondencia2.0\backend\obj\Debug\net9.0\staticwebassets.build.json.cache
+C:\Users\ADMINMATERIALES\Desktop\Correspondencia2.0\backend\obj\Debug\net9.0\backend.sourcelink.json

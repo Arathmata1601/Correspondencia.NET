@@ -20,6 +20,8 @@ using backend.Models.config;
 using backend.Interfaces.Documents;
 using backend.Services.Documents;
 using backend.Models.Documents;
+using backend.Interfaces.Events;
+using backend.Services.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -58,6 +60,7 @@ builder.Services.AddScoped<IUsuariosService, UsuariosService>();
 builder.Services.AddScoped<IAreasService, AreasService>();
 builder.Services.AddScoped<IConfigService, ConfigService>();
 builder.Services.AddScoped<IDocumentService, DocumentService>();
+builder.Services.AddScoped<IEventosService, EventosService>();
 
 var app = builder.Build();
 

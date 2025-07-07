@@ -15,5 +15,5 @@ public class Config
     public string ColorBotones { get; set; }
     public string HoverBotones { get; set; }
     public string ColorPagPrincipal { get; set; }
-    public int IdConf { get; set; }
+    
 }

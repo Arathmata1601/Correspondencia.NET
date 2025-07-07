@@ -4,5 +4,4 @@ namespace backend.Interfaces.config;
 public interface IConfigService
 {
     IEnumerable<Config> GetConfig();
-    Config? UpdateConfig(Config config);
 }

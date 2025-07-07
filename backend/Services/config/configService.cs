@@ -21,8 +21,8 @@ namespace backend.Services.config
         {
             return _context.Configuracion.ToList();
         }
-
-        public Config? UpdateConfig(Config config)
+/*
+        public Configuracion? UpdateConfig(Configuracion config)
         {
             var configExistente = _context.Configuracion.FirstOrDefault(c => c.idconf == config.idconf);
             if (configExistente == null)
@@ -38,6 +38,6 @@ namespace backend.Services.config
 
             _context.SaveChanges();
             return configExistente;
-        }
+        }*/
     }
 }

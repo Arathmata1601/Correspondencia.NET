@@ -23,10 +23,10 @@ namespace backend.Controllers.Config
             var config = _configService.GetConfig();
             return Ok(config);
         }
-
+/*
         [HttpPost("update/{id}")] // Keeping POST as original, but fixing route
         [Authorize(Roles = "root")]
-        public async Task<IActionResult> UpdateConfig(int id, [FromBody] Config actualizado)
+        public IActionResult UpdateConfig(int id, [FromBody] Configuracion actualizado)
         {
             if (actualizado == null)
             {
@@ -34,14 +34,14 @@ namespace backend.Controllers.Config
             }
 
             // Set the ID to ensure consistency
-            actualizado.Id = id;
+            actualizado.id = id;
 
-            var result = await _configService.UpdateConfig(actualizado); // Fixed: was using 'config' instead of 'actualizado'
+            var result = _configService.UpdateConfig(actualizado); // Fixed: was using 'config' instead of 'actualizado'
             if (result)
             {
                 return NoContent();
             }
             return StatusCode(500, "Error al editar configuracion.");
-        }
+        }*/
     }
 }

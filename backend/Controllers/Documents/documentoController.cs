@@ -34,8 +34,8 @@ namespace backend.Controllers.Documents
 
         //GET api/documents/{id}
         [HttpGet("getById/{id}")]
-        
-        public  IActionResult GetDocumentById(int id)
+
+        public IActionResult GetDocumentById(int id)
         {
             try
             {
@@ -57,52 +57,12 @@ namespace backend.Controllers.Documents
         [HttpPost()]
         [HttpPost("addDocument")]
 
-public async Task<IActionResult> CreateDocument([FromBody] DocumentoCreateDto document)
-{
-    // Validación básica
-    if (document == null)
-    {
-        return BadRequest("Los datos del documento no pueden estar vacíos");
-    }
-
-    if (!ModelState.IsValid)
-    {
-        return BadRequest(ModelState);
-    }
-
-    try
-    {
-        // Obtener el usuario desde el JWT
-        var usuarioEmisor = User.Identity?.Name;
-
-        if (string.IsNullOrEmpty(usuarioEmisor))
+        public async Task<IActionResult> CreateDocument([FromBody] DocumentoCreateDto document)
         {
-            return Unauthorized("No se pudo identificar al usuario emisor.");
-        }
-
-        var createdDocument = await _documentService.CreateDocumentWithCcpAsync(document, usuarioEmisor);
-
-        return CreatedAtAction(nameof(GetDocumentById), new { id = createdDocument.id_doc }, createdDocument);
-    }
-    catch (Exception ex)
-    {
-        return StatusCode(500, $"Error al crear documento: {ex.Message}");
-    }
-}
-
-
-        // PUT api/documents/{id}
-        [HttpPut("{id}")]
-        public  IActionResult UpdateDocument(int id, [FromBody] Documento document)
-        {
+            // Validación básica
             if (document == null)
             {
                 return BadRequest("Los datos del documento no pueden estar vacíos");
-            }
-
-            if (id != document.id_doc)
-            {
-                return BadRequest("El ID del documento no coincide");
             }
 
             if (!ModelState.IsValid)
@@ -112,20 +72,66 @@ public async Task<IActionResult> CreateDocument([FromBody] DocumentoCreateDto do
 
             try
             {
-                var updatedDocument =  _documentService.UpdateDocument(id, document);
-                if (updatedDocument == null)
+                // Obtener el usuario desde el JWT
+                var usuarioEmisor = User.Identity?.Name;
+
+                if (string.IsNullOrEmpty(usuarioEmisor))
                 {
-                    return NotFound($"Documento con ID {id} no encontrado");
+                    return Unauthorized("No se pudo identificar al usuario emisor.");
                 }
+
+                var createdDocument = await _documentService.CreateDocumentWithCcpAsync(document, usuarioEmisor);
+
+                return CreatedAtAction(nameof(GetDocumentById), new { id = createdDocument.id_doc }, createdDocument);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error al crear documento: {ex.Message}");
+            }
+        }
+
+        // PUT api/documents/{id}
+        // Controller actualizado
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateDocument(int id, [FromBody] DocumentoUpdateDto dto)
+        {
+            if (dto == null)
+            {
+                return BadRequest("Los datos del documento no pueden estar vacíos");
+            }
+
+            if (id <= 0)
+            {
+                return BadRequest("El ID debe ser mayor a cero");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                var updatedDocument = await _documentService.UpdateDocument(id, dto);
                 return Ok(updatedDocument);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (ArgumentNullException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Error al actualizar documento: {ex.Message}");
             }
         }
-
-        // DELETE api/documents/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDocument(int id)
         {

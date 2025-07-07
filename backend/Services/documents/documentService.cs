@@ -106,11 +106,16 @@ namespace backend.Services.Documents
             return documento;
         }
 
-        public Documento UpdateDocument(int id, Documento document)
+        public async Task<Documento> UpdateDocument(int id, DocumentoUpdateDto document)
         {
             if (document == null)
             {
                 throw new ArgumentNullException(nameof(document), "El documento no puede ser nulo");
+            }
+
+            if (id <= 0)
+            {
+                throw new ArgumentException("El ID debe ser mayor a cero", nameof(id));
             }
 
             var existingDocument = _context.Documento.FirstOrDefault(d => d.id_doc == id);
@@ -119,10 +124,36 @@ namespace backend.Services.Documents
                 throw new KeyNotFoundException($"Documento con ID {id} no encontrado");
             }
 
-            existingDocument.noMemo = document.noMemo;
-            existingDocument.area_pro = document.area_pro;
-            existingDocument.fechaDoc = document.fechaDoc;
-            existingDocument.asuntoDoc = document.asuntoDoc;
+            // Actualizar solo si el valor no es nulo o vacío
+            if (document.noMemo.HasValue && document.noMemo.Value != 0)
+                existingDocument.noMemo = document.noMemo.Value;
+
+            if (document.fechaDoc.HasValue)
+                existingDocument.fechaDoc = document.fechaDoc.Value;
+
+            if (!string.IsNullOrWhiteSpace(document.asuntoDoc))
+                existingDocument.asuntoDoc = document.asuntoDoc;
+
+            if (!string.IsNullOrWhiteSpace(document.descripcion))
+                existingDocument.descripcion = document.descripcion;
+
+            if (!string.IsNullOrWhiteSpace(document.area_rec))
+                existingDocument.area_rec = document.area_rec;
+
+            if (!string.IsNullOrWhiteSpace(document.despedida))
+                existingDocument.despedida = document.despedida;
+
+            if (!string.IsNullOrWhiteSpace(document.introduccion))
+                existingDocument.introduccion = document.introduccion;
+
+            if (!string.IsNullOrWhiteSpace(document.elaborado))
+                existingDocument.elaborado = document.elaborado;
+
+            if (!string.IsNullOrWhiteSpace(document.atencion))
+                existingDocument.atencion = document.atencion;
+
+            // Siempre actualizar lugar (corregido el typo)
+            existingDocument.lugarDOc = "Zacatecas, Zac.";
 
             _context.SaveChanges();
             return existingDocument;
