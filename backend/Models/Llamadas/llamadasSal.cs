@@ -1,7 +1,14 @@
-namespace backend.Models.Llamadas;
+using System;
+using System.ComponentModel.DataAnnotations;    
+using System.ComponentModel.DataAnnotations.Schema;
+using backend.Db;
 
-public class LlamadasSalModel
+namespace backend.Models.Llamadas.Salientes;
+
+[Table("llamadassalientes")]
+public class LlamadasSal
 {
+    [Key]
     public int id_llamada { get; set; }
     public DateTime fecha_llamada { get; set; }
     public string area_ { get; set; }

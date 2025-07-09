@@ -29,3 +29,72 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+.logo {
+  width: 10%;
+}
+.titulo {
+        font-weight: 100;
+        font-family: "Heebo", sans-serif;
+        font-size: 50px;
+        text-decoration: none;
+        color: black;
+        
+    
+    }
+
+@media (min-width:360px) and (max-width: 948px) {
+    /*LOGIN*/
+    .encabezado {
+        font-size: 60px;
+        text-align: center;
+        background-color: white;
+    }
+    
+    .logo {
+        width: 10%;
+    }
+    
+    .titulo {
+        font-weight: 100;
+        font-family: "Heebo", sans-serif;
+        font-size: 25px;
+        text-decoration: none;
+        color: black;
+        
+    
+    }
+     .card{
+      min-height: 5vh;
+      min-width: 5vh;
+      margin-top: 150px
+    }
+    
+    
+
+}
+
+@media (min-width: 950px) {
+    .encabezado {
+        font-size: 60px;
+        text-align: center;
+        background-color: white;
+    }
+    
+    .logo {
+        width: 10%;
+    }
+    
+    .titulo {
+        font-weight: 100;
+        font-family: "Heebo", sans-serif;
+        font-size: 60px;
+        text-decoration: none;
+        color: black;
+    }
+    .card{
+      min-height: 20vh;
+      min-width: 10vh;
+      margin-top:100px ;
+    }
+    
+}

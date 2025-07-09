@@ -48,6 +48,9 @@ namespace backend.Controllers.Events
             {
                 return BadRequest("Evento no puede ser nulo.");
             }
+            
+            var area = User.FindFirst("area")?.Value;
+            evento.area = area;
 
             await _eventosService.AddEventoAsync(evento);
             return CreatedAtAction(nameof(GetEventoById), new { id = evento.id_evento }, evento);

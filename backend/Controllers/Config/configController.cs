@@ -17,7 +17,6 @@ namespace backend.Controllers.Config
         }
 
         [HttpGet("config")]
-        [Authorize(Roles = "root")]
         public IActionResult GetConfig()
         {
             var config = _configService.GetConfig();

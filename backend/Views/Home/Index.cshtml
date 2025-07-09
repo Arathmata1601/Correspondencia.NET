@@ -1,8 +1,70 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Inicio de Sesión";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="encabezado">
+    <img class="logo" id="imgPrincipal" src="/img/LOGO-ESTADO.png">
+    <a class="titulo">CORRESPONDENCIA</a>
+    <img class="logo" id="imgSecun" src="/img/SEDIF.png">
 </div>
+
+<div class="container-login d-flex align-items-center justify-content-center vh-80 mt-lg-5">
+    <div class="card login-card shadow-sm p-4">
+        <h2 class="text-center mb-4">Inicio de Sesión</h2>
+
+        @if (!string.IsNullOrEmpty(ViewBag.Error))
+        {
+            <div class="alert alert-danger text-center" role="alert">
+                @ViewBag.Error
+            </div>
+        }
+
+        <form method="post" asp-controller="auth" asp-action="login">
+            <div class="mb-3">
+                <input type="text" class="form-control" id="usuario" placeholder="Usuario" name="usuario" required
+                       value="@ViewBag.Usuario" />
+            </div>
+
+            <div class="mb-3">
+                <input type="password" class="form-control" id="contrasena" placeholder="Contraseña"
+                       name="contrasena" required />
+            </div>
+
+            <div class="d-grid">
+                <button type="submit" class="btn my-custom-btn1" name="iniciar">Iniciar Sesión</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    fetch('/api/config')
+        .then(res => res.json())
+        .then(data => {
+            const color = data.colorPagPrincipal;
+            document.documentElement.style.setProperty('--color-principal', color);
+        });
+});
+</script>
+
+<style>
+:root {
+  --color-principal: #84272d;
+}
+
+.card{
+  min-height: 30vh;
+  min-width: 50vh;
+  padding-top: 3vh;
+  background-color: #84272d;
+  color: white;
+}
+
+.encabezado {
+  font-size: 60px;
+  text-align: center;
+  color: black;
+}
+
+</style>

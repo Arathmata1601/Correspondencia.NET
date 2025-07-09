@@ -1,8 +1,12 @@
-namespace backend.Models.Recibidos;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+namespace backend.Models.Recibidos.Internos;
 
+[Table("interna_dir")]
 public class InternaModel
 {
-    public int id_interna { get; set; }
+    [Key]
+    public int id_int { get; set; }
     public DateTime fecha_rec { get; set; }
     public string folio { get; set; }
     public string asunto { get; set; }

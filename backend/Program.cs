@@ -22,12 +22,32 @@ using backend.Services.Documents;
 using backend.Models.Documents;
 using backend.Interfaces.Events;
 using backend.Services.Events;
+using backend.Models.Llamadas.Entrantes;
+using backend.Interfaces.Llamadas;
+using backend.Services.Llamadas.Entrantes;
+using backend.Models.Llamadas.Salientes;
+using backend.Interfaces.Llamadas;
+using backend.Services.Llamadas.Salientes;
+using backend.Interfaces.Recibidos;
+using backend.Services.Recibidos;
+using backend.Models.Recibidos;
+using backend.Models.Recibidos.Externos;
+using backend.Interfaces.Recibidos.Externos;
+using backend.Services.Recibidos.Externos;
+using backend.Models.Recibidos.Internos;
+using backend.Interfaces.Recibidos.Internos;
+using backend.Services.Recibidos.Internos;
+using backend.Controllers;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // 1. Configurar servicios
 // Cambiar de AddControllersWithViews() a AddControllers() para API
-builder.Services.AddControllers();
+//builder.Services.AddControllers();
+builder.Services.AddControllersWithViews();
+
 
 // Cadena de conexión
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -61,6 +81,35 @@ builder.Services.AddScoped<IAreasService, AreasService>();
 builder.Services.AddScoped<IConfigService, ConfigService>();
 builder.Services.AddScoped<IDocumentService, DocumentService>();
 builder.Services.AddScoped<IEventosService, EventosService>();
+builder.Services.AddScoped<IEntrantesServices, EntrantesService>();
+builder.Services.AddScoped<ISalientesServices, SalientesService>();
+builder.Services.AddScoped<IRecibidosService, RecibidosService>();
+builder.Services.AddScoped<IExternaService, ExternaService>();
+builder.Services.AddScoped<IInternaService, InternaService>();
+
+var corsPolicy = "_allowFrontend";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy.WithOrigins("http://localhost:3000","http://localhost:5200")
+        //policy.WithOrigins("http://localhost:5173")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
+// Agrega CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
 
 var app = builder.Build();
 
@@ -71,8 +120,11 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
 //app.UseHttpsRedirection();
 app.UseRouting();
+
+app.UseCors("AllowFrontend");
 
 // ¡IMPORTANTE! Primero la autenticación, luego la autorización
 app.UseAuthentication();
@@ -85,8 +137,8 @@ app.UseStaticFiles();
 app.MapControllers();
 
 // Si también tienes controladores MVC, puedes mantener ambos:
-// app.MapControllerRoute(
-//     name: "default",
-//     pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapControllerRoute(
+name: "default",
+pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

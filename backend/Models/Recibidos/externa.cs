@@ -1,8 +1,13 @@
-namespace backend.Models.Recibidos;
 
-public class ExternaModel
+using System.ComponentModel.DataAnnotations;    
+using System.ComponentModel.DataAnnotations.Schema;
+namespace backend.Models.Recibidos.Externos;
+
+[Table("externa")]
+public class Externa
 {
-    public int id_externa { get; set; }
+    [Key]
+    public int id_ext { get; set; }
     public DateTime fecha_rec { get; set; }
     public string folio { get; set; }
     public string asunto { get; set; }

@@ -1,7 +1,14 @@
-namespace backend.Models.Llamadas;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
 
-public class LlamadasEntModel
+namespace backend.Models.Llamadas.Entrantes;
+
+[Table("llamadasentrantes")]
+public class LlamadasEnt
 {
+    [Key]
     public int id_llamadaEn { get; set; }
     public DateTime fechaEn { get; set; }
     public string nombre_areaEn { get; set; }

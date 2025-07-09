@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.logo {
+  width: 10%;
+}
+.titulo {
+  font-weight: 100;
+  font-family: "Heebo", sans-serif;
+  font-size: 50px;
+  text-decoration: none;
+  color: black;
+ 
+}
+.encabezado {
+  font-size: 60px;
+  text-align: center;
+  background-color: white;
+}
+.card {
+  min-height: 5vh;
+  min-width: 5vh;
+  margin-top: 150px;
+  background-color: #84272d;
+}

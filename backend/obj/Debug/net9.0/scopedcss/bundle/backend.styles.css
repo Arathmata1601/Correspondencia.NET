@@ -44,6 +44,7 @@ button.accept-policy[b-guihv28zom] {
   position: absolute;
   bottom: 0;
   width: 100%;
+  text-align: center;
   white-space: nowrap;
   line-height: 60px;
 }

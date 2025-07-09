@@ -1,0 +1,17 @@
+.titulo {
+  font-weight: 100;
+  font-family: "Heebo", sans-serif;
+  font-size: 50px;
+  text-decoration: none;
+  color: black;
+ 
+}
+.logo{
+    width: 10%;
+}
+.Header {
+  font-size: 60px;
+  text-align: center;
+  background-color: white;
+  text-align: center;
+}
