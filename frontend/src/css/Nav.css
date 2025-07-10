@@ -1,0 +1,29 @@
+/* Nav.css */
+.nav {
+  display: flex;
+  /*justify-content: flex-end;*/
+  width: 100%;
+  /*background-color: #84272d;*/
+}
+
+.navbar {
+  width: auto;
+  margin-left: auto;
+  /*background-color: #84272d;*/
+}
+
+/* Si quieres que el botón del menú esté más hacia la derecha 
+.navbar .container-fluid {
+  justify-content: flex-end;
+}*/
+
+/* Opcional: para ajustar el spacing */
+.navbar-brand {
+  margin-right: auto;
+}
+
+/* Si quieres que solo el botón esté a la derecha y el brand a la izquierda 
+.navbar .container-fluid {
+  display: flex;
+  justify-content: space-between;
+}*/

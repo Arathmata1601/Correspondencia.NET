@@ -1,0 +1,7 @@
+body{
+    background-color: white;
+    
+}
+.Footer {
+  margin-top: auto; /* Esto empuja el footer hacia abajo */
+}

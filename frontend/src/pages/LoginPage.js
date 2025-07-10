@@ -39,7 +39,7 @@ const LoginPage = () => {
     };
 
     return (
-        <body>
+        <div className='body'>
         <Header/>
             <div style={{ maxWidth: '400px', margin: 'auto', paddingTop: '100px' }}>
                 <div class="card login-card shadow-sm p-4">
@@ -53,7 +53,7 @@ const LoginPage = () => {
                     </form>
                 </div>
             </div>
-        </body>
+        </div>
     );
 };
 

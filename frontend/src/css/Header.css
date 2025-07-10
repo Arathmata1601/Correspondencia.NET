@@ -1,7 +1,7 @@
 .titulo {
-  font-weight: 100;
+  /*font-weight: 100;*/
   font-family: "Heebo", sans-serif;
-  font-size: 50px;
+  font-size: 200px;
   text-decoration: none;
   color: black;
  
@@ -10,7 +10,7 @@
     width: 10%;
 }
 .Header {
-  font-size: 60px;
+  /*font-size: 60px;*/
   text-align: center;
   background-color: white;
   text-align: center;

@@ -6,9 +6,9 @@ const Header = () => {
   
   return (
     <div className="Header">
-        <img className="logo" src="data:image/png;base64,<?=obtenerImagen1($conexion)?>"/>
+        <img className="logo" src="/Images/LOGO-ESTADO.png"/>
         <a className="titulo">CORRESPONDENCIA</a>
-        <img className="logo" src="data:image/png;base64,<?=obtenerImagen2($conexion)?>"/>
+        <img className="logo" src="/Images/SEDIF.png"/>
     </div>
   );
 };
