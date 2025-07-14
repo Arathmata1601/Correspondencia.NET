@@ -1,0 +1,27 @@
+
+.container-table {
+  padding-top: 2rem;
+  height: 550px;
+  overflow: auto;
+  margin: 0 auto;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centrar horizontalmente el contenido */
+}
+.MuiDataGrid-topContainer {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: white;
+}
+
+.MuiDataGrid-footerContainer {
+  position: sticky;
+  bottom: 0;
+  z-index: 100;
+  background-color: white;
+}
+
+

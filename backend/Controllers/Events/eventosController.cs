@@ -2,7 +2,7 @@ using backend.Db;
 using backend.Models.Events;
 using backend.Interfaces.Events;
 using backend.Services.Events;
-using Microsoft.EntityFrameworkCore;        
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,7 +13,7 @@ namespace backend.Controllers.Events
 {
     [ApiController]
     [Route("api/")]
-   
+
     public class EventosController : ControllerBase
     {
         private readonly IEventosService _eventosService;
@@ -22,13 +22,34 @@ namespace backend.Controllers.Events
         {
             _eventosService = eventosService;
         }
-        [HttpGet("eventos")]
-        [Authorize]
-        public  IActionResult GetEventos()
+        [HttpGet("eventos/todos")]
+        [Authorize(Roles = "root")]
+        public IActionResult GetEventos()
         {
             var evento = _eventosService.GetEventos();
             return Ok(evento);
         }
+        [HttpGet("eventos")]
+        [Authorize]
+        public async Task<IActionResult> GetEventoByArea()
+        {
+            var area = User.FindFirst("area")?.Value;
+
+            if (string.IsNullOrEmpty(area))
+            {
+                return Unauthorized("No se encontró el área en el token.");
+            }
+
+            var eventos = await _eventosService.GetEventoByAreaAsync(area);
+
+            if (eventos == null || !eventos.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(eventos);
+        }
+
         [HttpGet("eventos/{id}")]
         [Authorize]
         public async Task<IActionResult> GetEventoById(int id)
@@ -48,7 +69,7 @@ namespace backend.Controllers.Events
             {
                 return BadRequest("Evento no puede ser nulo.");
             }
-            
+
             var area = User.FindFirst("area")?.Value;
             evento.area = area;
 

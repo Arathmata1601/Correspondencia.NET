@@ -18,9 +18,10 @@ namespace backend.Controllers.Documents
         }
 
         // GET api/documents
-        [HttpGet]
+        [HttpGet("todos")]
         public async Task<ActionResult<List<Documento>>> GetDocuments()
         {
+           
             try
             {
                 var documents = await _documentService.GetDocuments();
@@ -31,10 +32,31 @@ namespace backend.Controllers.Documents
                 return StatusCode(500, $"Error interno del servidor: {ex.Message}");
             }
         }
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> GetDocumentsByArea()
+        {
+            var area_pro = User.FindFirst("area")?.Value;
+
+            if (string.IsNullOrEmpty(area_pro))
+            {
+                return Unauthorized("No se encontró el área en el token.");
+            }
+
+            var documents = await _documentService.GetDocumentsByAreaAsync(area_pro);
+
+            if (documents == null || !documents.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(documents);
+        }
+ 
 
         //GET api/documents/{id}
         [HttpGet("getById/{id}")]
-
+        [Authorize]
         public IActionResult GetDocumentById(int id)
         {
             try

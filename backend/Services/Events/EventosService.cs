@@ -21,6 +21,12 @@ namespace backend.Services.Events
         {
             return  _context.Eventos.ToList();
         }
+        public async Task<List<Eventos>> GetEventoByAreaAsync(string area)
+        {
+            return await _context.Eventos
+            .Where(e => e.area == area)
+            .ToListAsync();
+        }
 
         public async Task<Eventos> GetEventoByIdAsync(int id)
         {

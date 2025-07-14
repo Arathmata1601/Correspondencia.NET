@@ -22,7 +22,8 @@ const Nav = () => {
                                     <Link to ="/Home"><i class="bi-house-fill"> Inicio</i></Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">Link</a>
+                                    <Link to ="/Usuarios">
+                                    <i class="bi-person-fill">Usuarios</i></Link>
                                 </li>
                                 <li className="nav-item dropdown">
                                     <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

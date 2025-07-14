@@ -19,6 +19,12 @@ namespace backend.Services.Documents
         {
             return await _context.Documento.ToListAsync();
         }
+        public async Task<List<Documento>> GetDocumentsByAreaAsync(string area_pro)
+        {
+            return await _context.Documento
+            .Where(d => d.area_pro == area_pro)
+            .ToListAsync();
+        }
         public Documento? GetDocumentById(int id)
         {
             return _context.Documento.FirstOrDefault(d => d.id_doc == id);
