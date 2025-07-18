@@ -21,7 +21,7 @@ const Documentos = () => {
         <h3>DOCUMENTOS</h3>
         <div className='agregar'>
           <button className="boton-add" type='button'>
-            <Link><i class="bi-file-earmark-plus-fill">Agregar</i></Link>
+            <Link to ='/nuevoDoc'><i class="bi-file-earmark-plus-fill">Agregar</i></Link>
           </button>
         </div>
         <DataTable 

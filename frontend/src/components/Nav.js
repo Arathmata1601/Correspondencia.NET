@@ -1,8 +1,23 @@
 import React from "react";
 import '../css/Nav.css';
 import { Link } from 'react-router-dom';
+import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
+import AccundCircleIcon from '@mui/icons-material/AccountCircle';
+import HomeIcon from '@mui/icons-material/Home';
+import ApartmentIcon from '@mui/icons-material/Apartment';
 
 const Nav = () => {
+    const handleLogout = () => {
+        // Limpiar datos
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        localStorage.removeItem('authToken');
+        sessionStorage.clear();
+        
+        // Redirigir
+        window.location.href = window.location.origin;
+    };
+
     return (
         <div className="nav">
             <nav className="navbar bg-body-tertiary">
@@ -19,30 +34,26 @@ const Nav = () => {
                         <div className="offcanvas-body">
                             <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
                                 <li className="nav-item">
-                                    <Link to ="/Home"><i class="bi-house-fill"> Inicio</i></Link>
+                                    <Link to="/Home" className="link-boton-nav">
+                                        <HomeIcon /> Inicio
+                                    </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to ="/Usuarios">
-                                    <i class="bi-person-fill">Usuarios</i></Link>
+                                    <Link to="/Usuarios" className="link-boton-nav">
+                                        <AccundCircleIcon/> Usuarios
+                                    </Link>
                                 </li>
-                                <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Dropdown
-                                    </a>
-                                    <ul className="dropdown-menu">
-                                        <li><a className="dropdown-item" href="#">Action</a></li>
-                                        <li><a className="dropdown-item" href="#">Another action</a></li>
-                                        <li>
-                                            <hr className="dropdown-divider"/>
-                                        </li>
-                                        <li><a className="dropdown-item" href="#">Something else here</a></li>
-                                    </ul>
+                                <li>
+                                    <Link className="link-boton-nav">
+                                        <ApartmentIcon/> Areas
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
+                                    <button onClick={handleLogout} className="link-boton-nav" style={{border: 'none', background: 'none', cursor: 'pointer'}}>
+                                        <MeetingRoomIcon/> Cerrar Sesión
+                                    </button>
                                 </li>
                             </ul>
-                            <form className="d-flex mt-3" role="search">
-                                <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                                <button className="btn btn-outline-success" type="submit">Search</button>
-                            </form>
                         </div>
                     </div>
                 </div>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { esES } from '@mui/x-data-grid/locales';
 import { CircularProgress } from '@mui/material';
-//import '../css/TablaUsuarios.css';
+import '../css/TablaUsuarios.css';
 
 const columns = [
   { field: 'id_us', headerName: 'ID', width: 200 },
@@ -18,7 +18,7 @@ export default function TablaUsuarios() {
   useEffect(() => {
     const ApiURL = "/api/usuarios";
     const token = localStorage.getItem('token');
-    if (!token) {
+    if (!token) { 
       console.error('No se encontró token');
       return;
     }
@@ -45,7 +45,7 @@ export default function TablaUsuarios() {
   }, []);
 
   return (
-    <div className="container-table" style={{ maxWidth: '800px', width: '100%' }}>
+    <div className="container-table" style={{ maxWidth: '800px', width: '90%' }}>
       {loading ? (
         <CircularProgress />
       ) : (

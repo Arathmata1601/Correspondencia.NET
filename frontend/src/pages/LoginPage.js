@@ -28,8 +28,8 @@ const LoginPage = () => {
 
             let redirect = "/";
             if (data.rol === "root") redirect = "/home";
-            else if (data.rol === "administrador") redirect = "/admin/dashboard";
-            else if (data.rol === "jefe") redirect = "/jefe/inicio";
+            else if (data.rol === "administrador") redirect = "/home";
+            else if (data.rol === "jefe") redirect = "/home";
 
             window.location.href = redirect;
 

@@ -1,7 +1,11 @@
-namespace backend.Models.Documents;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+namespace backend.Models.Documents.Introduccion;
 
-public class IntroduccionModel
+[Table ("introducciones")]
+public class Introduccion
 {
-    public int id_introduccion { get; set; }
+    [Key]
+    public int idIntro { get; set; }
     public string intro { get; set; }
 }

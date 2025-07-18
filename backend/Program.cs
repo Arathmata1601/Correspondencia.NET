@@ -38,6 +38,10 @@ using backend.Models.Recibidos.Internos;
 using backend.Interfaces.Recibidos.Internos;
 using backend.Services.Recibidos.Internos;
 using backend.Controllers;
+using backend.Models.Documents.Despedida;
+using backend.Models.Documents.Introduccion;
+using backend.Interfaces.Complementos;
+using backend.Services.Documents.Complementos;
 
 
 
@@ -86,6 +90,7 @@ builder.Services.AddScoped<ISalientesServices, SalientesService>();
 builder.Services.AddScoped<IRecibidosService, RecibidosService>();
 builder.Services.AddScoped<IExternaService, ExternaService>();
 builder.Services.AddScoped<IInternaService, InternaService>();
+builder.Services.AddScoped<IComplementosService, complementosService>();
 
 var corsPolicy = "_allowFrontend";
 
