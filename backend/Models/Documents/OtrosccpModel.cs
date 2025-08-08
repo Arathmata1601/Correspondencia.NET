@@ -9,4 +9,5 @@ public class OtrosCcpModel
     public int id_otros { get; set; }
     public string nombre_otro { get; set; }
     public string puesto_otro { get; set; }
+    public int id_doc { get; set; }
 }

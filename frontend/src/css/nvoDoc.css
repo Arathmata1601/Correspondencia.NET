@@ -1,0 +1,36 @@
+.form-doc {
+  padding: 20px;
+}
+
+.form-doc form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.form-doc .col-md-6 {
+  flex: 1 1 48%; /* 2 columnas */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+}
+.form-doc .editor-wrapper .ck-editor__editable_inline {
+  min-height: 650px;
+}
+
+.form-doc .ck.ck-editor__main > .ck-editor__editable {
+  min-height: 300px; /* Aumenta esta altura si quieres más */
+}
+
+.form-doc .row {
+  width: 100%;
+}
+
+.row-mt-4 {
+  margin-top: 16px;
+}
+
+.autocomplete {
+  width: 100%;
+}

@@ -42,6 +42,8 @@ using backend.Models.Documents.Despedida;
 using backend.Models.Documents.Introduccion;
 using backend.Interfaces.Complementos;
 using backend.Services.Documents.Complementos;
+using DinkToPdf;
+using DinkToPdf.Contracts;
 
 
 
@@ -91,6 +93,11 @@ builder.Services.AddScoped<IRecibidosService, RecibidosService>();
 builder.Services.AddScoped<IExternaService, ExternaService>();
 builder.Services.AddScoped<IInternaService, InternaService>();
 builder.Services.AddScoped<IComplementosService, complementosService>();
+
+var context = new CustomAssemblyLoadContext();
+context.LoadUnmanagedLibrary(Path.Combine(Directory.GetCurrentDirectory(), "Libraries/wkhtmltox/libwkhtmltox.dll"));
+
+builder.Services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
 
 var corsPolicy = "_allowFrontend";
 

@@ -179,3 +179,4 @@ C:\Users\ADMINMATERIALES\Desktop\Correspondencia2.0\backend\obj\Debug\net9.0\com
 C:\Users\ADMINMATERIALES\Desktop\Correspondencia2.0\backend\obj\Debug\net9.0\compressed\9vd7iqfk1p-4b5kc7samf.gz
 C:\Users\ADMINMATERIALES\Desktop\Correspondencia2.0\backend\obj\Debug\net9.0\compressed\zby4n077vn-t10aeobyas.gz
 C:\Users\ADMINMATERIALES\Desktop\Correspondencia2.0\backend\obj\Debug\net9.0\compressed\jt1hm7z5lp-8sqq2c9c92.gz
+C:\Users\ADMINMATERIALES\Desktop\Correspondencia2.0\backend\bin\Debug\net9.0\DinkToPdf.dll

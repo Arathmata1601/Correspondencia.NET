@@ -4,7 +4,7 @@ using backend.Models.Users;
 using backend.Models.Areas;
 using backend.Models.config;
 using backend.Models.Documents;
-using backend.Models.Documents.ccp;
+//using backend.Models.Documents.ccp;
 using backend.Models.Documents.otros;
 using backend.Models.Events;
 using backend.Models.Llamadas.Entrantes;
@@ -29,7 +29,10 @@ namespace backend.Db
         public DbSet<Config> Configuracion { get; set; }
         public DbSet<Documento> Documento { get; set; }
         public DbSet<Eventos> Eventos { get; set; }
-        public DbSet<CcpModel> ConCopia { get; set; }
+        //DbSet<backend.Models.Documents.CcpModel> ConCopias { get; set; }
+        public DbSet<CcpModel> ConCopias { get; set; }
+
+        //public DbSet<CcpModel> ConCopia { get; set; }
         public DbSet<OtrosCcpModel> OtrosCcp { get; set; }
         public DbSet<LlamadasEnt> LlamadasEntrantes { get; set; }
         public DbSet<LlamadasSal> LlamadasSalientes { get; set; }
